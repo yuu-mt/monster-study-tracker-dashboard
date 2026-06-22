@@ -44,6 +44,28 @@ class StudyRecord(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(5)],
         verbose_name='理解度'
     )
+    is_curriculum = models.BooleanField(
+        default=False,
+        verbose_name='カリキュラム学習記録',
+        help_text='管理ダッシュボードのカリキュラム機能と紐づく学習記録かどうか'
+    )
+    # カリキュラム連携フィールド（is_curriculum=Trueのときのみ使用）
+    curriculum_chapter = models.ForeignKey(
+        'trainee_management.CurriculumChapter',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='study_records',
+        verbose_name='カリキュラム章'
+    )
+    curriculum_item = models.ForeignKey(
+        'trainee_management.CurriculumItem',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='study_records',
+        verbose_name='カリキュラム小項目'
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
