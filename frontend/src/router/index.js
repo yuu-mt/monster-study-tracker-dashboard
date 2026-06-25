@@ -1,40 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import { useAuthStore } from '../stores/auth'
+import LoginPage from '../pages/LoginPage.vue'
+import DashboardPage from '../pages/DashboardPage.vue'
 // 要件定義書 3-1-b: 左タブ「進捗管理」はデフォルトで「受講中」フィルター表示
+
+
 const routes = [
-  {
-    path: '/',
-    redirect: '/trainees',
-  },
-  {
-    path: '/trainees',
-    name: 'TraineeList',
-    component: () => import('../views/TraineeListView.vue'),
-    meta: { title: '進捗管理' },
-  },
-  {
-    path: '/trainees/:id',
-    name: 'TraineeDetail',
-    component: () => import('../views/TraineeDetailView.vue'),
-    meta: { title: '進捗詳細' },
-  },
-  {
-    path: '/trainees/register',
-    name: 'TraineeRegister',
-    component: () => import('../views/TraineeRegisterView.vue'),
-    meta: { title: '受講生・メンバー登録' },
-  },
-  {
-    path: '/curriculum',
-    name: 'CurriculumManagement',
-    component: () => import('../views/CurriculumManagementView.vue'),
-    meta: { title: 'カリキュラム管理' },
-  },
+  { path: '/login', component: LoginPage },
+  { path: '/dashboard', component: DashboardPage, meta: { requiresAuth: true } },
+  { path: '/', redirect: '/login' },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
+})
+
+router.beforeEach((to, from, next) => {
+  const auth = useAuthStore()
+  if (to.meta.requiresAuth && !auth.isAuthenticated()) {
+    next('/login')
+  } else {
+    next()
+  }
 })
 
 export default router
