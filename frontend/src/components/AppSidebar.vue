@@ -7,7 +7,7 @@
 
         <nav class="sidebar-nav">
             <p class="nav-section">メイン</p>
-            <RouterLink to="/trainees" class="nav-item" >
+            <RouterLink to="/dashboard/trainees" class="nav-item" >
                 <i class="ti ti-users"></i>受講生一覧
             </RouterLink>
             <RouterLink to="/curriculum" class="nav-item">

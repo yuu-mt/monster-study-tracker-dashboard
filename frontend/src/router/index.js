@@ -19,24 +19,29 @@ const routes = [
       },
       {
         path: 'trainees',
+        name: 'Trainees',
         component: () => import('@/pages/TraineesPage.vue')
       },
       {
         path: 'trainees/:id',
+        name: 'TraineeDetail',
         component: () => import('@/pages/TraineeDetailPage.vue')
       },
       {
         path: 'curriculum',
+        name: 'Curriculum',
         component: () => import('@/pages/CurriculumPage.vue')
       },
       {
         path: 'alerts',
+        name: 'Alerts',
         component: () => import('@/pages/AlertsPage.vue')
       },
       {
         path: 'settings',
+        name: 'Settings',
         component: () => import('@/pages/SettingsPage.vue')
-      }
+      },
     ]
   },
   {
