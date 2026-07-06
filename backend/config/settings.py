@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'accounts',
     'study',
     'trainee_management',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -96,6 +97,19 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,  
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Monster Study Tracker Dashboard API',
+    'DESCRIPTION': '講師用管理ダッシュボードAPI',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # JWT認証をSwagger UI上で試せるようにする
+    'SECURITY': [{'bearerAuth': []}],
+    'SWAGGER_UI_SETTINGS': {
+        'persistAuthorization': True,
+    },
 }
 
 SIMPLE_JWT = {
