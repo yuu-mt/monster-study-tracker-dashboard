@@ -33,11 +33,6 @@ const routes = [
         component: () => import('@/pages/CurriculumPage.vue')
       },
       {
-        path: 'alerts',
-        name: 'Alerts',
-        component: () => import('@/pages/AlertsPage.vue')
-      },
-      {
         path: 'settings',
         name: 'Settings',
         component: () => import('@/pages/SettingsPage.vue')

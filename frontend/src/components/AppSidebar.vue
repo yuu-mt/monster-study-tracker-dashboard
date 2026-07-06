@@ -15,9 +15,6 @@
             </RouterLink>
 
             <p class="nav-section mt">管理</p>
-            <RouterLink to="/alerts" class="nav-item">
-                <i class="ti ti-bell"></i>アラート
-            </RouterLink>
             <RouterLink to="/settings" class="nav-item">
                 <i class="ti ti-settings"></i>設定
             </RouterLink>
